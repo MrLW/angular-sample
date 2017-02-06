@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ng-class</title>
+    <style>
+        .red {
+            color: red;
+        }
+
+        .green {
+            color: green;
+        }
+    </style>
+</head>
+<body ng-app="module">
+<input type="text" ng-model="lastname">
+
+<ul ng-controller="ListController">
+    <li ng-repeat="name in userList track by $id($index)" ng-class="{red: lastname != '' && name.startsWith(lastname)}">
+        {{name}}
+    </li>
+</ul>
+
+<script src="../../lib/bower_components/angular/angular.js"></script>
+<script>
+    angular.module("module", [])
+            .controller("ListController", ["$scope", function ($scope) {
+                // 给数组设置值
+                $scope.userList = ["胡一刀", "郭靖", "杨过", "黄龙", "任我行"];
+            }])
+</script>
+</body>
+</html>

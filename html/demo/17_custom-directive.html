@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>custom-directive</title>
+    <script src="../../lib/bower_components/angular/angular.js"></script>
+    <link rel="stylesheet" href="../../lib/bower_components/bootstrap/dist/css/bootstrap.css">
+</head>
+<body ng-app="module">
+
+<liwen-button></liwen-button>
+
+<script>
+    /**
+     *  自定义指令
+     *  1、创建module
+     *  2、directive
+     *  3、在directive返回个对象
+     * @type {angular.Module}
+     */
+    var module = angular.module('module', []);
+    module.directive('liwenButton', [function () {
+        // 这个函数应该返回指令
+        return {
+            template: '<input class="btn btn-lg btn-primary btn-block" value="LiwenButton">'
+        };
+    }])
+</script>
+
+
+</body>
+</html>

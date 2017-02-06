@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>控制器</title>
+</head>
+<body ng-app="myModule" ng-controller="HelloController">
+<script src="../../lib/angular/angular.js"></script>
+<script>
+    // 由于控制器是必须出现在某个模块下，因此必须创建一个模块
+    //1、创建模块
+    var module = angular.module('myModule', []);
+    // 2、通过模块创建控制器,注意：参数名必须如此
+    // 方法一
+    //    module.controller('HelloController',function ($scope) {
+    //
+    //    })
+    // 方法二:解决代码混淆带来的问题
+    module.controller("HelloController", ["$scope", function (a) {
+        console.log(a);
+    }])
+</script>
+</body>
+</html>

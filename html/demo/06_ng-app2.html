@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ng-app</title>
+</head>
+<body ng-app="app">
+<script src="../../lib/angular/angular.js"></script>
+<div ng-app="app1" ng-controller="App1Controller1">
+    <input type="button" value="按鈕1" ng-click="do1()">
+
+</div>
+<div ng-app="app2" ng-controller="App2Controller2">
+    <input type="button" value="按鈕2" ng-click="do2()">
+</div>
+<script>
+    var app1 = angular.module("app1", []);
+    app1.controller("App1Controller1", ["$scope", function ($scope) {
+        $scope.do1 = function () {
+            console.log(111);
+        }
+    }]);
+
+    var app2 = angular.module("app2", []);
+
+    app2.controller("App2Controller2", ["$scope", function ($scope) {
+        $scope.do2 = function () {
+            console.log(222);
+        }
+    }]);
+
+    // 解决一个只能有一个module的问题
+    /**
+     *  参数1：新的模块
+     *  参数2：要被管理的模块数组
+     */
+    angular.module('app',['app1','app2']);
+
+</script>
+</body>
+</html>

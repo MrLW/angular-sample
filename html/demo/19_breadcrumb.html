@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>封装一个面包屑</title>
+    <script src="../../lib/bower_components/angular/angular.js"></script>
+    <link rel="stylesheet" href="../../lib/bower_components/bootstrap/dist/css/bootstrap.css">
+</head>
+<body ng-app="module" ng-controller="DemoController">
+
+<breadcrumb data="{{pathData}}"></breadcrumb>
+
+<script>
+    var module = angular.module('module', []);
+
+    module.controller('DemoController', ['$scope', function ($scope) {
+        $scope.pathData = {
+            home: '#',
+            itcast: '#',
+            itheima: '#',
+            bbs: '#'
+        };
+    }]);
+
+    // 定义指令
+    module.directive('breadcrumb', [function () {
+        return {
+//            scope:{
+//                data:'@data'
+//            },
+            templateUrl: '../templates/breadcrumb.html',
+            replace: true,
+            link: function (scope, element, attributes) {
+                scope.data = JSON.parse(attributes.data);
+                console.log(scope.data);
+            }
+        };
+    }])
+
+
+</script>
+</body>
+</html>

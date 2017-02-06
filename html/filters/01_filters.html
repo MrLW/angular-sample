@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../../lib/angular/angular.js"></script>
+</head>
+<body ng-app="app">
+<h1> {{1000 | currency}} </h1>
+<h1> {{1000 | date }} </h1>
+
+<div ng-controller="DemoController">
+   <pre> {{p1 | json:2}} </pre>
+</div>
+
+<script>
+    angular.module('app', [])
+            .controller('DemoController', ['$scope', '$filter', function ($scope, $filter) {
+                $scope.p1 = {
+                    name: '张三',
+                    age: 19,
+                    gender: false,
+                    zhengfang: {
+                        name: '张三',
+                        age: 19,
+                        gender: false
+                    },
+                    ceshi: [{
+                        name: '张三',
+                        age: 19,
+                        gender: false
+                    }, {
+                        name: '张三',
+                        age: 19,
+                        gender: false
+                    }, {
+                        name: '张三',
+                        age: 19,
+                        gender: false
+                    }]
+                };
+            }])
+
+</script>
+</body>
+2
+</html>

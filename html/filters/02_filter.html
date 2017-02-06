@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../../lib/angular/angular.js"></script>
+</head>
+<body ng-app="app">
+
+<div>
+    <h1>{{false | checkData }}</h1>
+</div>
+
+<script>
+    angular.module('app', [])
+            .filter('checkData', function () {
+                return function (input, style) {
+                    style = style || 1;
+                    switch (style) {
+                        case 1:
+                            return input ? '\u2713' : '\u2718';
+                            break;
+                        case 2:
+                            return input ? '\u2714' : '\u2719';
+                            break;
+                    }
+                }
+            })
+
+</script>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../../lib/bower_components/angular/angular.js"></script>
+    <link rel="stylesheet" href="../../lib/bower_components/bootstrap/dist/css/bootstrap.css">
+</head>
+<body ng-app="module">
+
+<btn primary="true">Hello Word</btn>
+
+<script>
+    // 创建module
+    var module = angular.module('module', []);
+    /* 取到属性
+     module.directive('btn', [function () {
+     return {
+     scope: {
+     primary: '@primary', // 可以写成@
+     lg: '@lg',
+     block: '@block',
+     },
+     template: '<button class="btn {{primary? \'btn-primary\' :\'\'}}">Button</button>'
+     };
+     }]);*/
+
+    module.directive('btn', function () {
+        return {
+            transclude: true,
+            replace:true,
+            template: '<button class=" ng-transclude btn {{primary? \'btn-primary\' :\'\'}}"></button>'
+        };
+    })
+
+
+</script>
+
+
+</body>
+</html>

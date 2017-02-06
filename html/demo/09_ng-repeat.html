@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ng-repeat</title>
+</head>
+<body ng-app="app">
+
+<ul ng-controller="UserController">
+    <li ng-repeat="user in users" data-id="{{user.id}}">
+        <strong>{{user.name}}</strong>
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        <span>{{user.age}}</span>
+    </li>
+</ul>
+
+
+<script src="../../lib/bower_components/angular/angular.js"></script>
+
+<script>
+    angular.module("app", [])
+            .controller("UserController", ["$scope", function ($scope) {
+                // 初始化姓名数组
+                $scope.users = [];
+                // 填充数据
+                for (var i = 1; i < 10; i++) {
+                    $scope.users[$scope.users.length] = {
+                        id: i,
+                        name: '小明' + i,
+                        age: 20 + i
+                    };
+                }
+            }])
+</script>
+
+
+</body>
+</html>

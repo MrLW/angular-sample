@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<!--
+    所有x需要ng管理的代码必须包裹在ng-app指令的元素中
+    表明这是一个angular应用程序
+ -->
+<body ng-app ng-init="user.name='world'">
+<h1>双向数据绑定</h1>
+<p><input type="text" placeholder="请输入name" ng-model="user.name"></p>
+<p>hello <strong>{{user.name}}</strong></p>
+<script src="../../lib/angular/angular.js"></script>
+
+</body>
+</html>

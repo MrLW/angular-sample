@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div ng-app="module">
+
+    <form ng-controller="LoginController">
+        用户名： <input type="text" ng-model="user.username"><br>
+        密码： <input type="password" ng-model="user.password"><br>
+        <input type="button" value="登录" ng-click="login()">
+    </form>
+</div>
+<script src="../../lib/angular/angular.js"></script>
+<script>
+    // 1、创建模块
+    var module = angular.module("module", []);
+    // 2、创建控制器
+    module.controller("LoginController", ["$scope", function ($scope) {
+        // 初始化数据
+        $scope.user = {
+            username: '',
+            password: ''
+        };
+        // 行为
+        $scope.login = function () {
+            // 因为数据变化是双向同步，因此界面上变化值会同步到$scope上
+            console.log($scope.user);
+        }
+
+        // 使用watch监视username
+        $scope.$watch('user.username', function (now, old) {
+            console.log("now:" + now);
+            console.log("old:" + old);
+        });
+
+    }])
+</script>
+</body>
+</html>
